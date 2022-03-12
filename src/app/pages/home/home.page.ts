@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+	selector: 'app-home',
+	templateUrl: './home.page.html',
+	styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+	constructor(private navCtrl: NavController) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
+
+	public openItem(itemId: number): void {
+		this.navCtrl.navigateForward(["details", itemId]);
+	}
 
 }
