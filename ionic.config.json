@@ -1,0 +1,7 @@
+{
+  "name": "thaimtl",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
