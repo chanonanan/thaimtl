@@ -4,3 +4,8 @@ export interface IDetails {
 	total: number;
 	lastRead: number;
 }
+
+export interface INovels {
+	display: true;
+	novelId: string;
+}

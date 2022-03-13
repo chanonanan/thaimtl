@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { IDetails, INovels } from '../../api/novels.model';
+import { NovelsService } from '../../api/novels.service';
 
 @Component({
 	selector: 'app-home',
@@ -8,9 +11,14 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-	constructor(private navCtrl: NavController) { }
+	novels$: Observable<(INovels & IDetails)[]>
+	constructor(
+		private navCtrl: NavController,
+		private novelService: NovelsService,
+	) { }
 
 	ngOnInit() {
+		this.novels$ = this.novelService.getNovels();
 	}
 
 	public openItem(novelId: string): void {
