@@ -8,7 +8,7 @@ import { NavController } from '@ionic/angular';
 	styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-	id: number;
+	novelId: string;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -16,11 +16,16 @@ export class DetailsPage implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.id = +this.route.snapshot.params.id;
+		this.novelId = this.route.snapshot.queryParamMap.get('novelId');
 	}
 
-	public openItem(itemId: number): void {
-		this.navCtrl.navigateForward(["chapter", itemId]);
+	public openItem(chapter: number): void {
+		this.navCtrl.navigateForward(["chapter"], {
+			queryParams: {
+				novelId: this.novelId,
+				chapter
+			}
+		});
 	}
 
 }

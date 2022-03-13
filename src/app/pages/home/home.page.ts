@@ -13,8 +13,13 @@ export class HomePage implements OnInit {
 	ngOnInit() {
 	}
 
-	public openItem(itemId: number): void {
-		this.navCtrl.navigateForward(["details", itemId]);
+	public openItem(novelId: string): void {
+		console.log(novelId);
+		this.navCtrl.navigateForward(["details"], {
+			queryParams: {
+				novelId,
+			}
+		});
 	}
 
 }

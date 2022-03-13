@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
 	<ion-buttons slot="start">
-		<ion-back-button defaultHref="/"></ion-back-button>
+		<ion-back-button [defaultHref]="getDefaultHref()"></ion-back-button>
 	</ion-buttons>
-    <ion-title>chapter</ion-title>
+    <ion-title>chapter {{ chapter }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
