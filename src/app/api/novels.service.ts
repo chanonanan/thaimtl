@@ -18,12 +18,11 @@ export class NovelsService {
 			switchMap(novels => {
 				return combineLatest(this.getNovelName(novels))
 			}),
-			tap(console.log)
 		)
 	}
 
 	getDetails(novelId: string): Observable<IDetails> {
-		return this.db.object<IDetails>(`details/${novelId}`).valueChanges().pipe(take(1));
+		return this.db.object<IDetails>(`details/${novelId}`).valueChanges();
 	}
 
 	getChapter(novelId: string, chapter: string): Observable<IChapters> {
@@ -31,9 +30,7 @@ export class NovelsService {
 	}
 
 	setLastRead(novelId: string, chapter: string) {
-		this.db.object(`details/${novelId}`).set({
-			lastRead: +chapter
-		});
+		this.db.object(`details/${novelId}/lastRead`).set(+chapter);
 	}
 
 	private getNovelName(novels: INovels[]) {
