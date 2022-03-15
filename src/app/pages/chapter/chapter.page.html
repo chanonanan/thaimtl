@@ -3,18 +3,10 @@
 	<ion-buttons slot="start">
 		<ion-back-button [defaultHref]="getDefaultHref()"></ion-back-button>
 	</ion-buttons>
-    <ion-title>chapter {{ chapter }}</ion-title>
+    <ion-title>Chapter {{ chapter }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-	<p>asdasd asdasdas asdasdsad asdasdas asdasdasd asdasdas asda</p>
-	<p>asdasd asdasdas asdasdsad asdasdas asdasdasd asdasdas asda</p>
-	<p>asdasd asdasdas asdasdsad asdasdas asdasdasd asdasdas asda</p>
-	<p>asdasd asdasdas asdasdsad asdasdas asdasdasd asdasdas asda</p>
-	<p>asdasd asdasdas asdasdsad asdasdas asdasdasd asdasdas asda</p>
-	<p>asdasd asdasdas asdasdsad asdasdas asdasdasd asdasdas asda</p>
-	<p>asdasd asdasdas asdasdsad asdasdas asdasdasd asdasdas asda</p>
-	<p>asdasd asdasdas asdasdsad asdasdas asdasdasd asdasdas asda</p>
-	<p>asdasd asdasdas asdasdsad asdasdas asdasdasd asdasdas asda</p>
+	<p *ngFor="let row of content$ | async" >{{ row }}</p>
 </ion-content>

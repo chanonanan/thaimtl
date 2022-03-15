@@ -9,3 +9,8 @@ export interface INovels {
 	display: true;
 	novelId: string;
 }
+
+export interface IChapters {
+	content: string;
+	title: string;
+}

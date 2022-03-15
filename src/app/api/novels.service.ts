@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { combineLatest, Observable } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
-import { IDetails, INovels } from './novels.model';
+import { IChapters, IDetails, INovels } from './novels.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -22,8 +22,18 @@ export class NovelsService {
 		)
 	}
 
-	getDetails(id: string): Observable<IDetails> {
-		return this.db.object<IDetails>(`details/${id}`).valueChanges().pipe(take(1));
+	getDetails(novelId: string): Observable<IDetails> {
+		return this.db.object<IDetails>(`details/${novelId}`).valueChanges().pipe(take(1));
+	}
+
+	getChapter(novelId: string, chapter: string): Observable<IChapters> {
+		return this.db.object<IChapters>(`chapters/${novelId}/${chapter}`).valueChanges().pipe(take(1));
+	}
+
+	setLastRead(novelId: string, chapter: string) {
+		this.db.object(`details/${novelId}`).set({
+			lastRead: +chapter
+		});
 	}
 
 	private getNovelName(novels: INovels[]) {
